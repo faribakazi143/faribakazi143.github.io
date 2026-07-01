@@ -767,7 +767,6 @@ const CONFIG = {
     <div class="contact-grid">
       <div class="ci reveal">
         <h3>Contact Information</h3>
-        <p>I'm seeking internships and data analyst roles, and I'm always open to discussing opportunities, projects, or collaborations.</p>
         <div id="info-cards"></div>
         <div class="connect">Connect with me</div>
         <div class="socials" id="socials"></div>
@@ -835,7 +834,7 @@ $("#eb-role").textContent = CONFIG.role;
 $("#hero-name").textContent = CONFIG.name;
 $("#hero-tagline").textContent = CONFIG.tagline;
 $("#foot-name").textContent = "© " + new Date().getFullYear() + " " + CONFIG.name;
-$("#contact-sub").textContent = "I'm currently seeking internships and data analyst roles. Reach out about opportunities, collaborations, or just to say hi.";
+$("#contact-sub").textContent = "I am actively seeking internships and data analyst positions, and I am always open to discussing opportunities, projects, collaborations, or simply saying hi. :)";
 
 const navItems = [["About","about"],["Work","work"],["Skills","skills-sec"],["Education","education"],["Certifications","certs-sec"],["Contact","contact"]];
 $("#nav").innerHTML = navItems.map(([l,id])=>`<a data-scroll="${id}">${l}</a>`).join("");
