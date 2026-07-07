@@ -916,6 +916,7 @@ const CONFIG = {
 const $ = s => document.querySelector(s);
 const $$ = s => Array.from(document.querySelectorAll(s));
 const PALETTE = ["var(--blue)","var(--magenta)","var(--amber)","var(--violet)"];
+const CARDCOL = ["var(--blue)","var(--magenta)","var(--magenta)","var(--blue)","var(--blue)","var(--magenta)","var(--magenta)","var(--blue)"];
 const ACCENT = { blue:"var(--blue)", magenta:"var(--magenta)", amber:"var(--amber)", violet:"var(--violet)" };
 const esc = s => String(s).replace(/[&<>"]/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const ICON = {
@@ -996,7 +997,7 @@ const PICON = {
 };
 const catIcon = c => { c=(c||"").toLowerCase(); if(/visual/.test(c)) return "chart"; if(/pipeline/.test(c)) return "database"; if(/experiment/.test(c)) return "sparkle"; return "table"; };
 $("#projects").innerHTML = CONFIG.projects.map((p,i)=>{
-  const _scatter=["var(--blue)","var(--magenta)","var(--magenta)","var(--blue)","var(--magenta)","var(--blue)","var(--blue)","var(--magenta)"]; const accent=_scatter[i%_scatter.length];
+  const accent=CARDCOL[i%CARDCOL.length];
   const tags=p.tools.map(s=>s.toLowerCase()).join("|");
   const shown=p.tools.slice(0,4).map(s=>`<span class="chip">${esc(s)}</span>`).join("");
   const more=p.tools.length>4?`<span class="chip more">+${p.tools.length-4} more</span>`:"";
@@ -1027,7 +1028,7 @@ const modal=$("#modal"); let lastFocus=null;
 const checkSvg='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8.5 12.5l2.5 2.5 4.5-5"/></svg>';
 function openModal(i){
   const p=CONFIG.projects[i]; if(!p) return;
-  const ac=PALETTE[i%4];
+  const ac=CARDCOL[i%CARDCOL.length];
   const overview=p.overview.split("\n\n").map(x=>`<p>${esc(x)}</p>`).join("");
   const feats=(p.features||[]).map(f=>`<li>${esc(f)}</li>`).join("");
   const outs=(p.outcomes||[]).map(o=>`<li>${checkSvg}${esc(o)}</li>`).join("");
