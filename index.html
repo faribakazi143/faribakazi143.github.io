@@ -325,8 +325,8 @@ const CONFIG = {
 </script>
 <style>
   :root{
-    --paper:#F3F2EC; --paper-2:#FAF9F5; --ink:#121317; --ink-soft:#3D3F46;
-    --line:rgba(20,21,25,.2);
+    --paper:#FFFFFF; --paper-2:#FAFAFC; --ink:#0B0B0D; --ink-soft:#17171B;
+    --line:rgba(11,11,13,.16);
     --blue:#2C4BB5; --magenta:#FF5DA2; --amber:#2C4BB5; --violet:#FF5DA2;
     --accent:var(--blue);
     --maxw:1160px; --ease:cubic-bezier(.22,.61,.36,1);
@@ -545,7 +545,7 @@ const CONFIG = {
   /* contact */
   #contact{ overflow:hidden; }
   .contact-head{ text-align:center; margin-bottom:64px; }
-  .contact-head h2{ font-family:"Space Grotesk",sans-serif; font-weight:700; font-size:clamp(2rem,5.5vw,3.4rem); letter-spacing:-.02em; line-height:1.05;
+  .contact-head h2{ font-family:"Space Grotesk",sans-serif; font-weight:700; font-size:clamp(1.7rem,4.5vw,2.8rem); letter-spacing:-.005em; line-height:1.05;
     background:linear-gradient(100deg,var(--blue),var(--magenta),var(--amber),var(--violet),var(--blue));
     background-size:300% 100%; -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; color:transparent;
     animation:shimmer 9s linear infinite, floaty 4.5s ease-in-out infinite; }
@@ -848,7 +848,7 @@ const CONFIG = {
   </div></section>
 
   <section id="work"><div class="wrap">
-    <div class="sec-head reveal"><span class="idx" style="color:var(--amber)">03</span><h2>Selected Work</h2><span class="meta mono" id="work-count"></span></div>
+    <div class="sec-head reveal"><span class="idx" style="color:var(--amber)">03</span><h2>Featured Projects</h2><span class="meta mono" id="work-count"></span></div>
     <p class="sec-sub reveal">Industry simulations and projects</p>
     <div class="filterbar reveal" id="filterbar"></div>
     <div class="grid" id="projects"></div>
@@ -881,7 +881,7 @@ const CONFIG = {
   </div></section>
 
   <section id="contact"><div class="wrap">
-    <div class="contact-head reveal"><h2>Get In Touch</h2><p id="contact-sub"></p></div>
+    <div class="contact-head reveal"><h2>Let's work together</h2><p id="contact-sub"></p></div>
     <div class="contact-grid">
       <div class="ci reveal">
         <h3>Contact Information</h3>
@@ -1143,7 +1143,7 @@ $("#brand").addEventListener("click",()=>scrollToId("top"));
   const cols=[[44,75,181],[255,93,162]];
   let pts=[],W=0,H=0,DPR=Math.min(devicePixelRatio||1,2),t0=performance.now();
   function size(){ W=innerWidth;H=innerHeight; cv.width=W*DPR;cv.height=H*DPR; ctx.setTransform(DPR,0,0,DPR,0,0); build(); }
-  function build(){ const N=Math.round(Math.min(90,(W*H)/17000)); pts=Array.from({length:N},()=>{ const tx=Math.random()*W,ty=Math.random()*H,c=cols[Math.floor(Math.random()*cols.length)]; return{tx,ty,x:W/2+(Math.random()-.5)*W*.6,y:H/2+(Math.random()-.5)*H*.5,c,r:1.6+Math.random()*4,a:.12+Math.random()*.34,ph:Math.random()*Math.PI*2,sp:.3+Math.random()*.7,delay:Math.random()*700}; }); }
+  function build(){ const N=Math.round(Math.min(55,(W*H)/26000)); pts=Array.from({length:N},()=>{ const tx=Math.random()*W,ty=Math.random()*H,c=cols[Math.floor(Math.random()*cols.length)]; return{tx,ty,x:Math.random()*W,y:Math.random()*H,c,r:1.6+Math.random()*4,a:.1+Math.random()*.3,ph:Math.random()*Math.PI*2,sp:.3+Math.random()*.7,delay:Math.random()*700}; }); }
   function frame(now){ ctx.clearRect(0,0,W,H);
     for(const p of pts){ const k=Math.min(1,Math.max(0,(now-t0-p.delay))/1200); const e2=1-Math.pow(1-k,3); let x=p.x+(p.tx-p.x)*e2, y=p.y+(p.ty-p.y)*e2;
       if(!reduce){ x+=Math.sin(now*.00034*p.sp+p.ph)*8; y+=Math.cos(now*.00034*p.sp+p.ph)*8; }
